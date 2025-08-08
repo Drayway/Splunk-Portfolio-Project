@@ -1,16 +1,21 @@
-# Splunk Projects Portfolio
+# Cybersecurity & Data Analytics Portfolio
 
-Welcome! This repository showcases my hands-on experience using Splunk for cybersecurity and business analytics. Below you will find a summary of my projects. Each project title is a clickable link that will take you to the full details further down this page.
+Welcome! This repository showcases my hands-on projects using industry-standard tools like Splunk and Wireshark. My goal is to demonstrate practical skills in log analysis, network traffic investigation, and business intelligence.
+
+Each project title in the Table of Contents is a clickable link that will take you to the full details further down this page.
 
 ---
 
 ## Table of Contents
 
-1.  [**Project 1: Cybersecurity - Investigating Coordinated Failed Logins**](#project-1-investigating-coordinated-failed-logins-cybersecurity)
+1.  [**Project 1: Splunk - Investigating Coordinated Failed Logins (Cybersecurity)**](#project-1-investigating-coordinated-failed-logins-cybersecurity)
     * *Analyzed security logs to identify and report on a potential password-spraying attack.*
 
-2.  [**Project 2: Business Analytics - E-commerce Web Traffic Analysis**](#project-2-e-commerce-web-traffic--customer-behavior-analysis-business-analytics)
+2.  [**Project 2: Splunk - E-commerce Web Traffic Analysis (Business Analytics)**](#project-2-e-commerce-web-traffic--customer-behavior-analysis-business-analytics)
     * *Analyzed web access logs to derive business intelligence on product popularity and customer geography.*
+
+3.  [**Project 3: Wireshark - Malware Traffic Analysis**](#project-3-malware-traffic-analysis)
+    * *Analyzed a network packet capture (`.pcap`) to identify indicators of compromise from a malware infection.*
 
 ---
 ---
@@ -79,5 +84,34 @@ Delivered a multi-part report identifying the top 10 most popular products and t
 ### **Visual Evidence**
 *A screenshot of the column chart showing the top 10 customer countries.*
 ![Splunk Project 2 Column Chart](https://github.com/user-attachments/assets/352faede-5aff-4e71-85a7-ff359b7d6a6f)
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+---
+
+## **Project 3: Malware Traffic Analysis**
+
+### **Objective**
+To analyze a network packet capture file (`.pcap`) to identify indicators of compromise (IOCs) related to a malware infection.
+
+### **Tools Used**
+* **Wireshark:** For packet capture and analysis.
+
+### **The Process**
+1.  **HTTP Analysis:** Opened the `.pcap` file in Wireshark and filtered for HTTP traffic. Identified the initial point of compromise: a suspicious `.zip` file (`2025-06-13-invoice.zip`) downloaded by the user.
+2.  **DNS Analysis:** Filtered for DNS traffic to investigate post-infection activity. Discovered DNS queries to a suspicious, non-standard domain (`massfriction.com`), identifying the malware's command and control (C2) server.
+3.  **Conclusion:** Correlated the HTTP download with the subsequent DNS query to confirm the infection chain.
+
+### **Outcome & Security Insight**
+Successfully identified two critical IOCs:
+* **Malware File:** `2025-06-13-invoice.zip`
+* **C2 Domain:** `massfriction.com`
+
+This information would allow a security team to create firewall rules to block the C2 domain, preventing further communication, and to deploy antivirus signatures to detect and remove the specific malware file from other infected hosts.
+
+### **Visual Evidence**
+*A screenshot of the DNS query filter showing the malicious C2 domain lookup.*
+![Wireshark DNS Analysis](https://github.com/user-attachments/assets/8b17e672-1daf-4ef1-9642-15355bf05b2c)
 
 [Back to Table of Contents](#table-of-contents)
