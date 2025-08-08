@@ -108,7 +108,4 @@ Successfully identified two critical IOCs:
 
 This information would allow a security team to create firewall rules to block the C2 domain, preventing further communication, and to deploy antivirus signatures to detect and remove the specific malware file from other infected hosts.
 
-### **Visual Evidence**
-![Wireshark DNS Analysis](https://github.com/user-attachments/assets/8b17e672-1daf-4ef1-9642-15355bf05b2c)
-
 [Back to Table of Contents](#table-of-contents)
