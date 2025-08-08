@@ -148,6 +148,7 @@ sourcetype="secure-2" "Failed password"
 Created a high-fidelity, automated detection rule that reduces the need for manual log review and enables a faster response to active brute-force attacks. This demonstrates the ability to build and implement proactive security monitoring.
 
 ### **Visual Evidence**
-![Splunk Alert Configuration](https://github.com/user-attachments/assets/114aa99e-e07d-4610-b27a-f72c92fdf910)
+![Splunk Alert Configuration](https://github.com/user-attachments/assets/d9ed2fca-1e95-43e8-8172-72aef1aca8ab)
+
 
 [Back to Table of Contents](#table-of-contents)
