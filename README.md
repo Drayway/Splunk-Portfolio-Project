@@ -1,6 +1,6 @@
 # Cybersecurity & Data Analytics Portfolio
 
-Welcome! This repository showcases my hands-on projects using industry-standard tools like Splunk and Wireshark. My goal is to demonstrate practical skills in log analysis, network traffic investigation, and business intelligence.
+Welcome! This repository showcases my hands-on projects using industry-standard tools like Splunk and Wireshark. My goal is to demonstrate practical skills in log analysis, network traffic investigation, business intelligence, and automated threat detection.
 
 Each project title in the Table of Contents is a clickable link that will take you to the full details further down this page.
 
@@ -16,6 +16,9 @@ Each project title in the Table of Contents is a clickable link that will take y
 
 3.  [**Project 3: Wireshark - Malware Traffic Analysis**](#project-3-malware-traffic-analysis)
     * *Analyzed a network packet capture (`.pcap`) to identify indicators of compromise from a malware infection.*
+
+4.  [**Project 4: Splunk - SIEM Alert for Brute-Force Detection**](#project-4-splunk---siem-alert-for-brute-force-detection)
+    * *Created a real-time, automated alert to proactively detect brute-force attack patterns.*
 
 ---
 ---
@@ -107,5 +110,44 @@ Successfully identified two critical IOCs:
 * **C2 Domain:** `massfriction.com`
 
 This information would allow a security team to create firewall rules to block the C2 domain, preventing further communication, and to deploy antivirus signatures to detect and remove the specific malware file from other infected hosts.
+
+### **Visual Evidence**
+![Wireshark DNS Analysis](https://github.com/user-attachments/assets/8b17e672-1daf-4ef1-9642-15355bf05b2c)
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+---
+
+## **Project 4: Splunk - SIEM Alert for Brute-Force Detection**
+
+### **Objective**
+To move from reactive analysis to proactive threat detection by creating an automated alert in Splunk, functioning as a SIEM.
+
+### **Tools Used**
+* **Splunk Enterprise (as a SIEM)**
+* **SPL (Splunk Processing Language)**
+
+### **The Process**
+1.  **Wrote an SPL query** to detect a brute-force condition: more than 10 failed logins for a single user from a single IP within a 5-minute window.
+2.  **Used the `bucket` command** to group events by time and `rex` to extract both the `user` and `src_ip`.
+3.  **Configured the query** as a scheduled alert to run every 5 minutes.
+4.  **Set the trigger condition** to fire when any results are found and configured a "Log Event" action for tracking.
+
+#### **Final Splunk Query:**
+```spl
+sourcetype="secure-2" "Failed password"
+| bucket _time span=5m
+| rex field=_raw "for (?:invalid user )?(?<user>\w+)"
+| rex field=_raw "from (?<src_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+| stats count by _time, user, src_ip
+| where count > 10
+```
+
+### **Outcome & Security Insight**
+Created a high-fidelity, automated detection rule that reduces the need for manual log review and enables a faster response to active brute-force attacks. This demonstrates the ability to build and implement proactive security monitoring.
+
+### **Visual Evidence**
+![Splunk Alert Configuration](https://github.com/user-attachments/assets/114aa99e-e07d-4610-b27a-f72c92fdf910)
 
 [Back to Table of Contents](#table-of-contents)
